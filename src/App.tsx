@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import { DatePicker } from "antd";
 import "./App.css";
 
