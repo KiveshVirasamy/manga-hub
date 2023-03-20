@@ -1,21 +1,27 @@
+import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import { ChapterFeed } from "../components/chapterFeed";
+import { MangaInfoSheet } from "../components/mangaInformation";
 
-/**
- * Props for the MangaPage component
- */
-interface MangaPageProps {
-  // Additional props can be added here
-}
-
-/**
- * Component that displays the manga page.
- */
-export function MangaPage(_props: MangaPageProps) {
-  // Get the state from the location
+export function MangaPage() {
   const location = useLocation();
-  const test = location;
+  const [mangaData, coverFile] = useMemo(
+    () => location.state,
+    [location.state]
+  ); // use useMemo to avoid unnecessary renders
 
-  console.log(test); // just here to test data for now
-
-  return <h1>hi</h1>;
+  return (
+    <>
+      <MangaInfoSheet
+        mangaData={mangaData}
+        coverFile={coverFile}
+        mangaId={mangaData.id} // set the mangaId to mangaData.id
+      />
+      <ChapterFeed
+        mangaId={mangaData.id}
+        coverFile={coverFile}
+        mangaData={mangaData}
+      />
+    </>
+  );
 }

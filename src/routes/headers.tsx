@@ -9,8 +9,8 @@ export function Header() {
       <header className="bg-stone-800 mb-2 flex justify-between content-center border-b-2 border-amber-600">
         <Link to="/">
           <img
-            className="w-12 m-0 -my-1"
-            src="/src/assets/img/smallLogo.png"
+            className="w-0 h-1 m-0 -my-1"
+            src="/src/assets/smallLogo.png"
             alt="logo"
           />
         </Link>
