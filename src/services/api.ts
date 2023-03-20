@@ -6,7 +6,7 @@ import { IMangaData } from "../models/manga";
 
 // Function to get list of manga
 export function getManga(listOrder: string | undefined): Promise<IMangaData[]> {
-    const apiUrl = "https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art&contentRating[]=safe";
+    const apiUrl = `https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art&contentRating[]=safe`;
     // Fetching the manga list from the API
     const response = fetch(apiUrl)
         .then((res) => res.json())
@@ -19,7 +19,7 @@ export function getManga(listOrder: string | undefined): Promise<IMangaData[]> {
 
 // Function to get cover data by id
 export function getCoverById(id: string): Promise<ICoverData> {
-    const apiUrl = "https://api.mangadex.org/cover/${id}";
+    const apiUrl = `https://api.mangadex.org/cover/${id}`;
     // Fetching the cover data from the API
     const response: Promise<ICoverData> = fetch(apiUrl)
         .then((res) => res.json())
@@ -32,7 +32,7 @@ export function getCoverById(id: string): Promise<ICoverData> {
 
 // Function to get the chapter feed by manga id
 export function getChapterFeedById(mangaId: string): Promise<IChapterData[]> {
-    const apiUrl = "https://api.mangadex.org/manga/${mangaId}/feed?translatedLanguage[]=en&limit=500";
+    const apiUrl = `https://api.mangadex.org/manga/${mangaId}/feed?translatedLanguage[]=en&limit=500`;
     // Fetching the chapter feed from the API
     const response = fetch(apiUrl)
         .then((res) => res.json())
@@ -45,7 +45,7 @@ export function getChapterFeedById(mangaId: string): Promise<IChapterData[]> {
 export function getChapterImagesById(
     chapterId: string | undefined
 ): Promise<IChapter> {
-    const apiUrl = "https://api.mangadex.org/at-home/server/${chapterId}";
+    const apiUrl = `https://api.mangadex.org/at-home/server/${chapterId}`;
     // Fetching the chapter images from the API
     const response = fetch(apiUrl)
         .then((res) => res.json())
