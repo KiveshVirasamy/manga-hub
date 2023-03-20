@@ -6,7 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 export function Header() {
   return (
     <React.Fragment>
-      <header className="bg-stone-800 mb-2 flex justify-between content-center border-b-2 border-amber-600">
+      <header className="bg-black mb-2 flex justify-between content-center border-b-2 border-amber-600">
         <Link to="/">
           <img
             className="w-0 h-1 m-0 -my-1"
@@ -15,18 +15,18 @@ export function Header() {
           />
         </Link>
 
-        <h1 className="text-amber-500 flex antialiased flex-auto items-center font-mono uppercase font-bold text-3xl">
+        <h1 className="text-yellow-500 flex antialiased flex-auto items-center font-mono uppercase font-bold text-3xl">
           <span className="text-lg">Manga-</span>
           <span className="text-lg">Hub</span>
         </h1>
 
         <nav className="flex justify-center items-center m-2">
           <div className="dropdown dropdown-end dropdown-hover">
-            <button className="inline-flex justify-center items-center border border-amber-500 rounded-md shadow-sm px-4 py-2 bg-stone-800 text-amber-500 hover:bg-amber-500 hover:text-white">
+            <button className="inline-flex justify-center items-center border border-amber-500 rounded-md shadow-sm px-4 py-2 bg-black text-yellow-500 hover:bg-amber-500 hover:text-white">
               <TbListSearch className="text-3xl mr-2" />
               <span className="text-base font-medium">Search</span>
             </button>
-            <ul className="absolute z-10 -ml-4 mt-3 transform px-2 w-64 rounded-md shadow-lg bg-stone-800 text-amber-500">
+            <ul className="absolute z-10 -ml-4 mt-3 transform px-2 w-64 rounded-md shadow-lg bg-black text-yellow-500">
               <li className="py-2">
                 <Link
                   to="/mangalist/createdAt"
@@ -64,7 +64,7 @@ export function Header() {
 
           <button
             aria-label="Search"
-            className="inline-flex justify-center items-center border border-amber-500 rounded-md shadow-sm px-4 py-2 ml-2 bg-stone-800 text-amber-500 hover:bg-amber-500 hover:text-white"
+            className="inline-flex justify-center items-center border border-amber-500 rounded-md shadow-sm px-4 py-2 ml-2 bg-black text-yellow-500 hover:bg-amber-500 hover:text-white"
           >
             <TbListSearch className="text-3xl" />
           </button>
