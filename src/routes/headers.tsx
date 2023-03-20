@@ -1,6 +1,6 @@
 import React from "react";
-import { TbListSearch } from "react-icons/tb";
 import { Link, Outlet } from "react-router-dom";
+import SearchManga from "../components/searchManga";
 
 // Declare Header component as a function
 export function Header() {
@@ -26,6 +26,9 @@ export function Header() {
               className="text-sm text-yellow-400"
               style={{ listStyle: "none", margin: 0, padding: 0 }}
             >
+              <li className="m-4 flex h-6 w-fit items-center justify-center overflow-hidden rounded-md bg-neutral-100 text-black my-auto -mt-1 h-7 w-3/4 border-none bg-neutral-100 py-0 px-1 text-xs text-black">
+                <SearchManga></SearchManga>
+              </li>
               <li
                 className="text-lg px-2 py-1 m-2 hover:bg-black rounded"
                 style={{ display: "inline-block" }}
@@ -52,13 +55,6 @@ export function Header() {
               </li>
             </ul>
           </div>
-
-          <button
-            aria-label="Search"
-            className="inline-flex justify-center items-center border border-amber-500 rounded-md shadow-sm px-4 py-2 ml-2 bg-black text-yellow-500 hover:bg-amber-500 hover:text-white"
-          >
-            <TbListSearch className="text-3xl" />
-          </button>
         </nav>
       </header>
 
