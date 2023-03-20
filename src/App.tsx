@@ -3,6 +3,9 @@ import { DatePicker } from "antd";
 import "./App.css";
 
 function App() {
-  return <DatePicker />;
+  return (
+    <h1 className="text-3xl font-bold underline text-blue-900">MangaHub</h1>
+  );
+
 }
 export default App;
