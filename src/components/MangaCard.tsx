@@ -1,4 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import React from "react";
 import { Link } from "react-router-dom";
 import { ICoverData } from "../models/covers";
 import { IMangaCardProp } from "../props/mangaCoverProps";

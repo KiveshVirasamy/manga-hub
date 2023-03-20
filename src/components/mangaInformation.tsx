@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { IMangaInfoProp } from "../props/mangaCoverProps";
 
 const GRADIENT_CLASSES =

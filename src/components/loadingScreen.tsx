@@ -1,3 +1,5 @@
+import React from "react";
+
 export function Loading(): JSX.Element {
   return (
     <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-black">
