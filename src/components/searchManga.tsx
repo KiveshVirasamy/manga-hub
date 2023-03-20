@@ -1,40 +1,31 @@
-import { Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchManga() {
   const navigate = useNavigate();
+
+  const handleSubmit = (values: { search: string }) => {
+    navigate(`./search/${values.search}`);
+  };
+
   return (
     <div className="m-4 flex h-6 w-fit items-center justify-center overflow-hidden rounded-md bg-neutral-100">
       <Formik
         initialValues={{ search: "Search Manga-Hub" }}
-        onSubmit={(value, { resetForm }) => {
-          navigate(`./search/${value.search}`);
-          resetForm();
-        }}
+        onSubmit={handleSubmit}
       >
-        {({ values, handleSubmit, handleChange, handleBlur }) => (
-          <form
-            onSubmit={handleSubmit}
-            className="mt-1 flex h-full justify-center p-0"
-          >
-            <input
-              className="text-black my-auto -mt-1 h-7 w-3/4 border-none bg-neutral-100 py-0 px-1 text-xs text-black"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              id="search"
-              type="search"
-              name="search"
-              value={values.search}
-            />
-            <button
-              className=" -mt-1 w-1/4 text-center text-2xl text-black"
-              type="submit"
-            >
-              <IoMdSearch className="m-auto" />
-            </button>
-          </form>
-        )}
+        <Form className="mt-1 flex h-full justify-center p-0">
+          <Field
+            className="text-black my-auto -mt-1 h-7 w-3/4 border-none bg-neutral-100 py-0 px-1 text-xs"
+            id="search"
+            name="search"
+            placeholder="Search manga"
+          />
+          <button className="-mt-1 w-1/4 text-center text-2xl" type="submit">
+            <IoMdSearch className="m-auto" />
+          </button>
+        </Form>
       </Formik>
     </div>
   );
