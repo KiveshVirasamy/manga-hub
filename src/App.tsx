@@ -1,8 +1,11 @@
-import "./App.css";
+import "../dist/App.css";
+import { Header } from "././routes/headers";
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline text-blue-900">MangaHub</h1>
+    <>
+      <Header />
+    </>
   );
 }
 
