@@ -16,48 +16,39 @@ export function Header() {
         </Link>
 
         <h1 className="text-yellow-500 flex antialiased flex-auto items-center font-mono uppercase font-bold text-3xl">
-          <span className="text-lg">Manga-</span>
-          <span className="text-lg">Hub</span>
+          <span className="text-lg text-yellow-500">Manga-</span>
+          <span className="text-lg text-yellow-500">Hub</span>
         </h1>
 
         <nav className="flex justify-center items-center m-2">
-          <div className="dropdown dropdown-end dropdown-hover">
-            <button className="inline-flex justify-center items-center border border-amber-500 rounded-md shadow-sm px-4 py-2 bg-black text-yellow-500 hover:bg-amber-500 hover:text-white">
-              <TbListSearch className="text-3xl mr-2" />
-              <span className="text-base font-medium">Search</span>
-            </button>
-            <ul className="absolute z-10 -ml-4 mt-3 transform px-2 w-64 rounded-md shadow-lg bg-black text-yellow-500">
-              <li className="py-2">
-                <Link
-                  to="/mangalist/createdAt"
-                  className="block px-4 py-2 text-base hover:text-white hover:bg-amber-500"
-                >
-                  New Release
-                </Link>
+          <div>
+            <ul
+              className="text-sm text-yellow-400"
+              style={{ listStyle: "none", margin: 0, padding: 0 }}
+            >
+              <li
+                className="text-lg px-2 py-1 m-2 hover:bg-black rounded"
+                style={{ display: "inline-block" }}
+              >
+                <Link to="/mangalist/createdAt">New Release</Link>
               </li>
-              <li className="py-2">
-                <Link
-                  to="/mangalist/rating"
-                  className="block px-4 py-2 text-base hover:text-white hover:bg-amber-500"
-                >
-                  Top Rated
-                </Link>
+              <li
+                className="text-lg px-2 py-1 m-2 hover:bg-black rounded"
+                style={{ display: "inline-block" }}
+              >
+                <Link to="/mangalist/rating">Top Rated</Link>
               </li>
-              <li className="py-2">
-                <Link
-                  to="/mangalist/followedCount"
-                  className="block px-4 py-2 text-base hover:text-white hover:bg-amber-500"
-                >
-                  Most Popular
-                </Link>
+              <li
+                className="text-lg px-2 py-1 m-2 hover:bg-black rounded"
+                style={{ display: "inline-block" }}
+              >
+                <Link to="/mangalist/followedCount">Most Popular</Link>
               </li>
-              <li className="py-2">
-                <Link
-                  to="/mangalist/latestUploadedChapter"
-                  className="block px-4 py-2 text-base hover:text-white hover:bg-amber-500"
-                >
-                  New Chapters
-                </Link>
+              <li
+                className="text-lg px-2 py-1 m-2 hover:bg-black rounded"
+                style={{ display: "inline-block" }}
+              >
+                <Link to="/mangalist/latestUploadedChapter">New Chapters</Link>
               </li>
             </ul>
           </div>

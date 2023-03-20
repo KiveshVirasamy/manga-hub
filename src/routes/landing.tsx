@@ -1,5 +1,3 @@
-// Import React library
-
 // Define LandingPage component
 export function LandingPage() {
   return (
@@ -15,7 +13,7 @@ export function LandingPage() {
       >
         Welcome To
         {/* Use a single span element with appropriate CSS classes for the subheading */}
-        <span className="text-amber-500 flex antialiased flex-auto items-center font-mono uppercase text-center">
+        <span className="text-yellow-500 flex antialiased flex-auto items-center font-mono uppercase text-center">
           <span className="text-lg">Manga-</span>
           <span className="text-lg">Hub</span>
         </span>
