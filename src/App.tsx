@@ -1,3 +1,4 @@
+
 import "../dist/App.css";
 import { Header } from "././routes/headers";
 
@@ -7,6 +8,6 @@ function App() {
       <Header />
     </>
   );
-}
 
+}
 export default App;
