@@ -13,7 +13,6 @@
   "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
@@ -22,7 +21,6 @@
     // suppress errors for missing 'import React' in files
     "react/react-in-jsx-scope": "off",
     "quotes": "off",
-    "@typescript-eslint/quotes": "off",
-    "@typescript-eslint/no-shadow": "disable"
+    "@typescript-eslint/quotes": "off"
   }
 }
