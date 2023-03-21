@@ -23,7 +23,11 @@ export default function SearchManga() {
             name="search"
             placeholder="Search manga"
           />
-          <button className="-mt-1 w-1/4 text-center text-2xl" type="submit">
+          <button
+            className="-mt-1 w-1/4 text-center text-2xl"
+            type="submit"
+            aria-label="search-button"
+          >
             <IoMdSearch className="m-auto" />
           </button>
         </Form>
