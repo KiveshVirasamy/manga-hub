@@ -1,24 +1,26 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Header } from "./routes/headers";
+import App from "./App";
+import ErrorPage from "./routes/errorPage";
+import { LandingPage } from "./routes/landing";
 import { MangaCardContainer } from "./routes/mangaCard";
 import { MangaPage } from "./routes/mangaPages";
+import { MangaReader } from "./routes/mangaReading";
 
-/**
- * The QueryClient instance used to make queries
- */
 const queryClient = new QueryClient();
 
-/**
- * The configuration object for the BrowserRouter
- */
-const routerConfig = [
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <Header />,
+    element: <App />,
+    errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
       {
         path: "mangalist/:orderType",
         element: <MangaCardContainer />,
@@ -27,29 +29,18 @@ const routerConfig = [
         path: "manga/:mangaId",
         element: <MangaPage />,
       },
+      {
+        path: "manga/chapter/:chapterId",
+        element: <MangaReader />,
+      },
     ],
   },
-];
+]);
 
-/**
- * The BrowserRouter instance
- */
-const router = createBrowserRouter(routerConfig);
-
-/**
- * The root component of the application
- */
-const App = () => {
-  return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </React.StrictMode>
-  );
-};
-
-/**
- * Render the application to the root element in the DOM
- */
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  </React.StrictMode>
+);

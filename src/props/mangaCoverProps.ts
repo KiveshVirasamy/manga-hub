@@ -8,3 +8,8 @@ export interface IMangaCardProp {
     readonly mangaData: Readonly<IMangaData>;
     readonly className?: string;
 }
+export type IMangaInfoProp = {
+    mangaId: string;
+    coverFile: string;
+    mangaData: IMangaData;
+};
