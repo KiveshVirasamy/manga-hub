@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IMangaInfoProp } from "../props/mangaCoverProps";
 
 const GRADIENT_CLASSES =
@@ -9,7 +9,7 @@ const TAG_CLASSES =
 export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [expandDescription, setExpandDescription] = useState(false);
 
-  const toggleDescription = () => setExpandDescription(!expandDescription);
+  const toggleDescription = () => setExpandDescription(expandDescription);
 
   return (
     <div className="bg-black rounded-3xl flex flex-col m-6 overflow-hidden">
