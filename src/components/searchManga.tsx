@@ -2,8 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { FC } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
-interface SearchMangaProps {}
+import { SearchMangaProps } from "../models/searchMangaProps";
 
 interface FormValues {
   search: string;

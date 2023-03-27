@@ -1,42 +1,50 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MangaCard from "../components/MangaCard";
+import SearchManga from "../components/searchManga";
 import { IMangaData } from "../models/manga";
 import { useMangaList } from "../services/api";
 
-// Define the props that this component will receive
-interface MangaCardContainerProps {}
-
-export function MangaCardContainer(props: MangaCardContainerProps) {
-  // Get the orderType parameter from the URL using the useParams hook
+export function MangaCardContainer() {
   const { orderType } = useParams<{ orderType: string }>();
 
-  // Fetch the manga data using useQuery hook
   const mangaQuery = useQuery<IMangaData[], Error>(
     [`mangaQuery`, orderType],
     () => useMangaList(orderType)
   );
 
-  // Refetch the manga data when the orderType parameter changes
   useEffect(() => {
     mangaQuery.refetch();
   }, [orderType]);
 
-  // Extract the relevant data from the mangaQuery object
   const mangaListArray = mangaQuery.data ?? [];
   const mangaListIsLoading = mangaQuery.isLoading;
   const mangaListIsSuccess = mangaQuery.isSuccess;
   const mangaListIsError = mangaQuery.isError;
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredMangaList = mangaListArray.filter((mangaData: IMangaData) =>
+    mangaData?.attributes?.title?.en
+      ?.toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
-      {mangaListIsLoading && <div>manga is loading</div>}
+      <SearchManga value={searchQuery} onChange={handleSearchInputChange} />
+      {mangaListIsLoading && <div>Manga is loading...</div>}
       {mangaListIsSuccess && (
         <div className="flex flex-wrap justify-center gap-2">
-          {mangaListArray.length > 0 ? (
-            mangaListArray.map((mangaData: IMangaData) => {
-              // Extract the necessary data from the mangaData object
+          {filteredMangaList.length > 0 ? (
+            filteredMangaList.map((mangaData: IMangaData) => {
               const mangaId = mangaData.id;
               const coverId =
                 mangaData.relationships.find(
@@ -48,7 +56,6 @@ export function MangaCardContainer(props: MangaCardContainerProps) {
                 "";
               const contentRating = mangaData?.attributes?.contentRating ?? "";
 
-              // Render the MangaCard component with the extracted data
               return (
                 <MangaCard
                   key={mangaId}
@@ -61,7 +68,7 @@ export function MangaCardContainer(props: MangaCardContainerProps) {
               );
             })
           ) : (
-            <h1>No manga found</h1>
+            <div>{mangaListIsError}</div>
           )}
         </div>
       )}

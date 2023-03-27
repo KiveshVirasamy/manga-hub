@@ -3,12 +3,7 @@ import { useParams } from "react-router-dom";
 import { IChapterData } from "../models/chapters";
 import { getChapterImagesById } from "../services/api";
 
-interface ChapterImageProps {
-  chapter: string;
-  hash: string;
-}
-
-function ChapterImage({ chapter, hash }: ChapterImageProps) {
+function ChapterImage({ chapter, hash }: IChapterData) {
   const imageUrl = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
 
   // Use the `loading` attribute to add `lazy` loading to the image.
@@ -33,7 +28,15 @@ export function MangaReader() {
     <div className="pt-16 p-4 flex flex-col items-center">
       {isSuccess &&
         data?.dataSaver.map((chapter) => (
-          <ChapterImage key={chapter} chapter={chapter} hash={data.hash} />
+          <ChapterImage
+            key={chapter}
+            chapter={chapter}
+            hash={data.hash}
+            data={[]}
+            dataSaver={[]}
+            result={""}
+            baseUrl={""}
+          />
         ))}
     </div>
   );

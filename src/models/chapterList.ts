@@ -1,13 +1,13 @@
 export interface IAttributes {
     volume?: any;
     chapter: string;
-    title?: string;
+    title?: string | null;
     translatedLanguage: string;
     externalUrl?: any;
-    publishAt: string;
-    readableAt: string;
-    createdAt: string;
-    updatedAt: string;
+    publishAt: string | null;
+    readableAt: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
     pages: number;
     version: number;
 }
