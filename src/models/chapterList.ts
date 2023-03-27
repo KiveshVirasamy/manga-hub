@@ -17,7 +17,7 @@ export interface IRelationship {
     type: string;
 }
 
-export interface IChapterData {
+export interface IChapters {
     id: string;
     type: string;
     attributes: IAttributes;
@@ -27,7 +27,7 @@ export interface IChapterData {
 export interface IChapterFeedObject {
     result: string;
     response: string;
-    data: IChapterData[];
+    data: IChapters[];
     limit: number;
     offset: number;
     total: number;

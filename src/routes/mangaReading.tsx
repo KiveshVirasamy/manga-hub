@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { IChapter } from "../models/chapters";
+import { IChapterData } from "../models/chapters";
 import { getChapterImagesById } from "../services/api";
 
 interface ChapterImageProps {
@@ -21,7 +21,7 @@ export function MangaReader() {
 
   // Use the `enabled` attribute to control when the query should be sent.
   // This improves performance by not sending the query if it's not needed.
-  const { data, isLoading, isSuccess } = useQuery<IChapter, Error>(
+  const { data, isSuccess } = useQuery<IChapterData, Error>(
     ["chapterImages", chapterId],
     () => getChapterImagesById(chapterId),
     {

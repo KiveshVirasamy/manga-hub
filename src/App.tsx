@@ -1,4 +1,4 @@
-import { Header } from "././routes/headers";
+import Header from "././routes/headers";
 import "./App.css";
 
 function App() {

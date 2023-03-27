@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MangaCard } from "../components/MangaCard";
+import MangaCard from "../components/MangaCard";
 import { IMangaData } from "../models/manga";
-import { getManga } from "../services/api";
+import { useMangaList } from "../services/api";
 
 // Define the props that this component will receive
 interface MangaCardContainerProps {}
@@ -15,7 +15,7 @@ export function MangaCardContainer(props: MangaCardContainerProps) {
   // Fetch the manga data using useQuery hook
   const mangaQuery = useQuery<IMangaData[], Error>(
     [`mangaQuery`, orderType],
-    () => getManga(orderType)
+    () => useMangaList(orderType)
   );
 
   // Refetch the manga data when the orderType parameter changes

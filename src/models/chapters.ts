@@ -1,4 +1,4 @@
-export interface IChapter {
+export interface IChapterData {
     hash: string;
     data: string[];
     dataSaver: string[];
@@ -7,5 +7,5 @@ export interface IChapter {
 export interface IChapterObject {
     result: string;
     baseUrl: string;
-    chapter: IChapter;
+    chapter: IChapterData;
 }
