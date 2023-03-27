@@ -38,11 +38,11 @@ export function MangaCardContainer() {
   );
 
   return (
-    <div>
+    <div className="bg-gray-900 text-white p-10">
       <SearchManga value={searchQuery} onChange={handleSearchInputChange} />
       {mangaListIsLoading && <div>Manga is loading...</div>}
       {mangaListIsSuccess && (
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {filteredMangaList.length > 0 ? (
             filteredMangaList.map((mangaData: IMangaData) => {
               const mangaId = mangaData.id;

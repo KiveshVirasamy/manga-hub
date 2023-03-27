@@ -8,7 +8,15 @@ function ChapterImage({ chapter, hash }: IChapterData) {
 
   // Use the `loading` attribute to add `lazy` loading to the image.
   // This improves performance by only loading the image when it's needed.
-  return <img className="py-1" src={imageUrl} alt="" loading="lazy" />;
+  return (
+    <img
+      className="w-full max-w-md h-auto mx-auto my-8"
+      src={imageUrl}
+      alt=""
+      loading="lazy"
+      aria-label="image"
+    />
+  );
 }
 
 export function MangaReader() {
@@ -25,7 +33,10 @@ export function MangaReader() {
   );
 
   return (
-    <div className="pt-16 p-4 flex flex-col items-center">
+    <div className="pt-16 p-4">
+      <h1 className="text-center text-4xl font-bold mb-8" aria-label="heading">
+        Manga Reader
+      </h1>
       {isSuccess &&
         data?.dataSaver.map((chapter) => (
           <ChapterImage

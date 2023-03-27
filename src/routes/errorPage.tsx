@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function ErrorPage(): JSX.Element {
   const location = useLocation();
@@ -13,10 +13,21 @@ export default function ErrorPage(): JSX.Element {
 
   console.error(error);
 
+  const navigate = useNavigate();
+
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, {error}</p>
+    <div className="bg-gray-600 ">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Oops!</h1>
+        <p className="text-lg text-gray-600 mb-8">{`Sorry, ${error}`}</p>
+        <button
+          className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded inline-block"
+          aria-label="back button"
+          onClick={() => navigate(-1)}
+        >
+          Go back
+        </button>
+      </div>
     </div>
   );
 }

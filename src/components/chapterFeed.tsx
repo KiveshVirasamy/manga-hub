@@ -25,18 +25,27 @@ export function ChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
     return sortedChapterList?.map((data: IChapters): JSX.Element => {
       return (
         <Link key={data.id} to={`../manga/chapter/${data.id}`}>
-          <p className="cursor-pointer text-yellow-300">
-            Chapter: {data.attributes.chapter} Pages: {data.attributes.pages}
-          </p>
+          <div className="border border-gray-400 rounded p-4 cursor-pointer transition-all duration-300 hover:bg-gray-700">
+            <p className="text-white font-bold">
+              Chapter {data.attributes.chapter}
+            </p>
+            <p className="text-gray-300">Pages: {data.attributes.pages}</p>
+          </div>
         </Link>
       );
     });
   }, [sortedChapterList]);
 
   return (
-    <div className="bg-black">
-      <h1>Available Chapters</h1>
-      {queryResult.isSuccess && chapterList}
+    <div className="bg-gray-800 rounded-xl p-6">
+      <h1 className="text-white font-bold text-lg mb-4">Available Chapters</h1>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {queryResult.isError && (
+          <p className="text-red-500">Error loading chapter list.</p>
+        )}
+        {queryResult.isLoading && <p>Loading chapters...</p>}
+        {queryResult.isSuccess && chapterList}
+      </div>
     </div>
   );
 }

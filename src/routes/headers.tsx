@@ -1,37 +1,56 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import smallLogo from "../assets/smallLogo.png";
 
 const Header: React.FC = () => {
   return (
     <>
-      <header className="bg-black mb-2 flex justify-between items-center border-b-2 border-yellow-600">
-        <Link to="/">
-          <img className="w-0 h-1 m-0 -my-1" src={smallLogo} alt="logo" />
-        </Link>
+      <header className="bg-gray-800 mb-6 flex justify-between items-center border-b-4 py-4">
+        <Link to="/" className="flex items-center"></Link>
 
-        <h1 className="text-yellow-500 flex antialiased flex-auto items-center font-mono uppercase font-bold text-3xl">
-          <span className="text-lg" style={{ color: "yellow" }}>
-            Manga-
-          </span>
-          <span className="text-lg" style={{ color: "yellow" }}>
-            Hub
-          </span>
+        <h1
+          className="ml-8 text-gray-300 text-3xl font-bold font-mono tracking-wider"
+          aria-label="heading text"
+        >
+          MangaHub
         </h1>
 
-        <nav className="flex justify-center items-center m-2">
-          <ul className="text-sm text-yellow-400 list-none m-0 p-0 flex">
-            <li className="text-lg text-yellow-400 px-2 py-1 m-2 hover:bg-black rounded">
-              <Link to="/mangalist/createdAt">New Release</Link>
+        <nav className="flex justify-end items-center">
+          <ul className="flex items-center space-x-4 text-gray-300 text-lg font-semibold tracking-wide">
+            <li>
+              <Link
+                to="/mangalist/createdAt"
+                className="px-4 py-2 rounded hover:bg-gray-700"
+                aria-label="New Releases"
+              >
+                New Releases
+              </Link>
             </li>
-            <li className="text-lg text-yellow-400 px-2 py-1 m-2 hover:bg-black rounded">
-              <Link to="/mangalist/rating">Top Rated</Link>
+            <li>
+              <Link
+                to="/mangalist/rating"
+                className="px-4 py-2 rounded hover:bg-gray-700"
+                aria-label="Top Rated"
+              >
+                Top Rated
+              </Link>
             </li>
-            <li className="text-lg text-yellow-400 px-2 py-1 m-2 hover:bg-black rounded">
-              <Link to="/mangalist/followedCount">Most Popular</Link>
+            <li>
+              <Link
+                to="/mangalist/followedCount"
+                className="px-4 py-2 rounded hover:bg-gray-700"
+                aria-label="Most Popular"
+              >
+                Most Popular
+              </Link>
             </li>
-            <li className="text-lg text-yellow-400 px-2 py-1 m-2 hover:bg-black rounded">
-              <Link to="/mangalist/latestUploadedChapter">New Chapters</Link>
+            <li>
+              <Link
+                to="/mangalist/latestUploadedChapter"
+                className="px-4 py-2 rounded hover:bg-gray-700"
+                aria-label="New Chapters"
+              >
+                New Chapters
+              </Link>
             </li>
           </ul>
         </nav>

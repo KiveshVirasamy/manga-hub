@@ -2,9 +2,9 @@ import { useState } from "react";
 import { IMangaInfoProp } from "../props/mangaCoverProps";
 
 const GRADIENT_CLASSES =
-  "from-yellow-400 to-yellow-200 via-yellow-200 bg-gradient-to-t bg-clip-text text-transparent";
+  "from-yellow-500 to-gray-400 via-yellow-400 bg-gradient-to-t bg-clip-text text-transparent";
 const TAG_CLASSES =
-  "m-1 ml-0 rounded-full bg-yellow-600 w-fit px-2 text-sm font-semibold uppercase";
+  "m-1 ml-0 rounded-full bg-gray-600 w-fit px-2 text-sm font-semibold uppercase";
 
 export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [expandDescription, setExpandDescription] = useState(false);
@@ -20,16 +20,16 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   );
 
   return (
-    <div className="bg-black rounded-3xl m-6 overflow-hidden">
+    <div className="bg-gray-800 rounded-xl p-6 m-6 overflow-hidden">
       <img
-        className="w-full h-auto"
+        className="w-auto h-auto object-cover rounded-lg mx-auto "
         src={`https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg`}
         alt={`${
           mangaData.attributes.title?.en ||
           mangaData.attributes.title?.["ja-ro"]
         } Cover`}
       />
-      <div className="flex flex-col text-yellow-300 p-6 pt-4">
+      <div className="flex flex-col text-white p-6 pt-4">
         <h2 className="text-yellow-400 uppercase font-semibold italic text-lg mb-2">
           {mangaData.attributes.title?.en ||
             mangaData.attributes.title?.["ja-ro"]}
@@ -37,7 +37,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
         <section
           onClick={toggleDescription}
           className={`min-h-[5rem] h-fit transition-all duration-500 cursor-pointer ${
-            expandDescription ? "" : `${GRADIENT_CLASSES} h-20 overflow-hidden`
+            expandDescription ? "" : `${GRADIENT_CLASSES}  h-20 overflow-hidden`
           }`}
         >
           <p>{description}</p>

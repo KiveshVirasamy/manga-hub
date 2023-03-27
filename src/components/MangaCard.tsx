@@ -25,16 +25,15 @@ function MangaCard(props: IMangaCardProp): JSX.Element {
     <Link
       to={`../manga/${mangaId}`}
       state={[mangaData, data?.attributes.fileName]}
+      className="block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
     >
       <div
-        className="border-2 border-yellow-400 shadow-yellow-400 shadow-inner overflow-hidden w-52 h-72 bg-no-repeat bg-cover bg-center rounded m-1 flex flex-col-reverse"
+        className="w-full h-full bg-cover bg-center bg-no-repeat border-2 border-yellow-400 shadow-yellow-400 shadow-inner overflow-hidden w-52 h-72 bg-no-repeat bg-cover bg-center rounded m-1 flex flex-col-reverse"
         style={{ backgroundImage }}
       >
-        <div className="w-full h-2/3 text-white bg-gradient-to-t from-black flex justify-end flex-col ">
+        <div className="w-full h-2/3 text-white bg-gradient-to-t from-black flex justify-end flex-col p-4 ">
           <h2 className="font-bold px-2">{title}</h2>
-          <p className="mx-2 mb-2 mt-1 rounded-full bg-yellow-400 w-fit px-2 text-[0.6rem] font-semibold uppercase">
-            {contentRating}
-          </p>
+          <p className="mt-1 text-sm text-gray-600 truncate">{contentRating}</p>
         </div>
       </div>
     </Link>
