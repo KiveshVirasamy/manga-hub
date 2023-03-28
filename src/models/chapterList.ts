@@ -32,3 +32,9 @@ export interface IChapterFeedObject {
     offset: number;
     total: number;
 }
+
+export interface IChapterData {
+    id: string;
+    chapter: number;
+    pages: number;
+}

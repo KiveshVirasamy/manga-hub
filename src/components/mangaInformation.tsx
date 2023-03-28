@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { IMangaInfoProp } from "../props/mangaCoverProps";
 
-const GRADIENT_CLASSES =
-  "from-yellow-500 to-gray-400 via-yellow-400 bg-gradient-to-t bg-clip-text text-transparent";
-const TAG_CLASSES =
-  "m-1 ml-0 rounded-full bg-gray-600 w-fit px-2 text-sm font-semibold uppercase";
+const TRUNCATE_LENGTH = 200;
 
 export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
-  const [expandDescription, setExpandDescription] = useState(false);
-
-  const toggleDescription = () =>
-    setExpandDescription((prevState) => !prevState);
+  const [showFullDescription, setShowFullDescription] = useState(false);
+  const toggleDescription = () => setShowFullDescription(!showFullDescription);
 
   const description =
     mangaData.attributes.description.en || "No Description Found";
@@ -19,56 +14,62 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
     (tag) => tag.attributes.group === "genre"
   );
 
+  const truncatedDescription = description.substring(0, TRUNCATE_LENGTH);
+  const isDescriptionTruncated =
+    description.length > truncatedDescription.length;
+
   return (
-    <div className="card bg-gray-800 rounded-xl p-6 m-6 overflow-hidden">
-      {" "}
-      {/* use card component */}
-      <img
-        className="w-auto h-auto object-cover rounded-lg mx-auto "
-        src={`https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg`}
-        alt={`${
-          mangaData.attributes.title?.en ||
-          mangaData.attributes.title?.["ja-ro"]
-        } Cover`}
-      />
-      <div className="card-content flex flex-col text-white p-6 pt-4">
-        <h2 className="text-yellow-400 uppercase font-semibold italic text-lg mb-2">
-          {mangaData.attributes.title?.en ||
-            mangaData.attributes.title?.["ja-ro"]}
-        </h2>
-        <section
-          onClick={toggleDescription}
-          className={`min-h-[5rem] h-fit transition-all duration-500 cursor-pointer ${
-            expandDescription ? "" : `${GRADIENT_CLASSES}  h-20 overflow-hidden`
-          }`}
-        >
-          <p>{description}</p>
-        </section>
-        <div className="flex flex-wrap py-2 transition-all duration-500">
-          {tags.map((tag) => (
-            <span key={tag.id} className={`badge ${TAG_CLASSES}`}>
-              {tag.attributes.name.en}
-            </span>
-          ))}
-        </div>
-        <p>
-          Release Year:{" "}
-          <span className={`badge ${TAG_CLASSES}`}>
+    <div className="card bg-white shadow-lg rounded-lg overflow-hidden mx-6 my-8">
+      <div className="card-content flex flex-col">
+        <div
+          className="w-full h-64 bg-gray-300 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg)`,
+          }}
+        ></div>
+        <div className="px-4 py-6">
+          <h2 className="text-2xl font-bold mb-2">
+            {mangaData.attributes.title?.en ||
+              mangaData.attributes.title?.["ja-ro"]}
+          </h2>
+          <p className="text-gray-600">
+            {isDescriptionTruncated ? (
+              <>
+                {showFullDescription ? description : truncatedDescription}{" "}
+                <button
+                  className="text-blue-500 font-semibold"
+                  onClick={toggleDescription}
+                >
+                  {showFullDescription ? "Read Less" : "Read More"}
+                </button>
+              </>
+            ) : (
+              description
+            )}
+          </p>
+          <div className="flex flex-wrap mt-4">
+            {tags.map((tag) => (
+              <span
+                key={tag.id}
+                className="badge bg-gray-200 text-gray-700 mr-2 mb-2 px-2 py-1 text-sm font-semibold rounded-full"
+              >
+                {tag.attributes.name.en}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4">
+            <span className="font-semibold">Release Year:</span>{" "}
             {mangaData.attributes.year}
-          </span>
-        </p>
-        <p>
-          Status:{" "}
-          <span className={`badge ${TAG_CLASSES}`}>
+          </p>
+          <p>
+            <span className="font-semibold">Status:</span>{" "}
             {mangaData.attributes.status}
-          </span>
-        </p>
-        <p>
-          State:{" "}
-          <span className={`badge ${TAG_CLASSES}`}>
+          </p>
+          <p>
+            <span className="font-semibold">State:</span>{" "}
             {mangaData.attributes.state}
-          </span>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
   );

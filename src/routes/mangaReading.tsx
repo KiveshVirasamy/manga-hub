@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { IChapterData } from "../models/chapters";
-import { getChapterImagesById } from "../services/api";
+import { fetchChapterImagesById } from "../services/api";
 
 function ChapterImage({ chapter, hash }: IChapterData) {
   const imageUrl = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
@@ -19,14 +19,14 @@ function ChapterImage({ chapter, hash }: IChapterData) {
   );
 }
 
-export function MangaReader() {
+export function MangaReading() {
   const { chapterId } = useParams<{ chapterId: string }>();
 
   // Use the `enabled` attribute to control when the query should be sent.
   // This improves performance by not sending the query if it's not needed.
   const { data, isSuccess } = useQuery<IChapterData, Error>(
     ["chapterImages", chapterId],
-    () => getChapterImagesById(chapterId),
+    () => fetchChapterImagesById(chapterId ?? "null"),
     {
       enabled: Boolean(chapterId),
     }

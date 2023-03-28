@@ -4,14 +4,14 @@ import { useParams } from "react-router-dom";
 import { MangaCard } from "../components/mangaCard";
 import { SearchManga } from "../components/searchManga";
 import { IMangaData } from "../models/manga";
-import { useMangaList } from "../services/api";
+import { fetchMangaList } from "../services/api";
 
 export function MangaCardContainer() {
   const { orderType } = useParams<{ orderType: string }>();
 
   const mangaQuery = useQuery<IMangaData[], Error>(
     [`mangaQuery`, orderType],
-    () => useMangaList(orderType)
+    () => fetchMangaList(orderType ?? "null")
   );
 
   useEffect(() => {

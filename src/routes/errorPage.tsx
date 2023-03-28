@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function ErrorPage(): JSX.Element {
+export default function ErrorPage() {
   const location = useLocation();
   const [error, setError] = useState<string>("");
 
@@ -25,7 +25,7 @@ export default function ErrorPage(): JSX.Element {
           aria-label="back button"
           onClick={() => navigate(-1)}
         >
-          Go back
+          Back to safety
         </button>
       </div>
     </div>
