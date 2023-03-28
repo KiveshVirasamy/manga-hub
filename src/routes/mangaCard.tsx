@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MangaCard from "../components/MangaCard";
+import { MangaCard } from "../components/MangaCard";
 import SearchManga from "../components/searchManga";
 import { IMangaData } from "../models/manga";
 import { useMangaList } from "../services/api";

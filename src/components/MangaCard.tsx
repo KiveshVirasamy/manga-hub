@@ -5,7 +5,7 @@ import { ICoverData } from "../models/covers";
 import { IMangaCardProp } from "../props/mangaCoverProps";
 import { getCoverById } from "../services/api";
 
-function MangaCard(props: IMangaCardProp): JSX.Element {
+export function MangaCard(props: IMangaCardProp): JSX.Element {
   const { mangaId, coverId, title, contentRating, mangaData } = props;
 
   const { data } = useQuery<ICoverData>(["coverQuery", coverId], () =>
@@ -39,5 +39,3 @@ function MangaCard(props: IMangaCardProp): JSX.Element {
     </Link>
   );
 }
-
-export default MangaCard;
