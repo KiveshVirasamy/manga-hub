@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MangaCard } from "../components/MangaCard";
+import { MangaCard } from "../components/mangaCard";
 import { SearchManga } from "../components/searchManga";
 import { IMangaData } from "../models/manga";
 import { useMangaList } from "../services/api";
@@ -30,6 +30,10 @@ export function MangaCardContainer() {
   ) => {
     setSearchQuery(event.target.value);
   };
+
+  const [cardClass] = useState(
+    "block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 p-4"
+  );
 
   const filteredMangaList = mangaListArray.filter((mangaData: IMangaData) =>
     mangaData?.attributes?.title?.en
@@ -66,7 +70,7 @@ export function MangaCardContainer() {
                   coverId={coverId}
                   title={title}
                   contentRating={contentRating}
-                  className="block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 p-4"
+                  className={cardClass}
                 />
               );
             })

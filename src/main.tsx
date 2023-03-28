@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./routes/errorPage";
-import { MangaCardContainer } from "./routes/mangaCard";
+import { MangaCardContainer } from "./routes/mangaContainer";
 import { MangaPage } from "./routes/mangaPages";
 import { MangaReader } from "./routes/mangaReading";
 
