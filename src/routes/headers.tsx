@@ -1,7 +1,6 @@
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-const Header: React.FC = () => {
+export function Header() {
   return (
     <>
       <header className="bg-gray-800 mb-6 flex justify-between items-center border-b-4 py-4">
@@ -59,6 +58,4 @@ const Header: React.FC = () => {
       <Outlet />
     </>
   );
-};
-
-export default Header;
+}

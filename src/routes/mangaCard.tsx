@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MangaCard } from "../components/MangaCard";
-import SearchManga from "../components/searchManga";
+import { SearchManga } from "../components/searchManga";
 import { IMangaData } from "../models/manga";
 import { useMangaList } from "../services/api";
 
@@ -40,7 +40,9 @@ export function MangaCardContainer() {
   return (
     <div className="bg-gray-900 text-white p-10">
       <SearchManga value={searchQuery} onChange={handleSearchInputChange} />
-      {mangaListIsLoading && <div>Manga is loading...</div>}
+      {mangaListIsLoading && (
+        <div className="text-white">Manga is loading...</div>
+      )}
       {mangaListIsSuccess && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {filteredMangaList.length > 0 ? (
@@ -64,11 +66,12 @@ export function MangaCardContainer() {
                   coverId={coverId}
                   title={title}
                   contentRating={contentRating}
+                  className="block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 p-4"
                 />
               );
             })
           ) : (
-            <div>{mangaListIsError}</div>
+            <div className="text-white">{mangaListIsError}</div>
           )}
         </div>
       )}

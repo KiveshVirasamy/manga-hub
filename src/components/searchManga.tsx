@@ -1,14 +1,19 @@
-import { Field, Form, Formik } from "formik";
-import { FC } from "react";
+import { Form, Formik, FormikHelpers } from "formik";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { FormValues, SearchMangaProps } from "../props/searchMangaProps";
 
-const SearchManga: FC<SearchMangaProps> = () => {
+export const SearchManga = (props: SearchMangaProps): JSX.Element => {
+  const { value, onChange } = props;
+
   const navigate = useNavigate();
 
-  const handleSubmit = (values: FormValues) => {
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ): Promise<void> => {
     navigate(`./search/${values.search}`);
+    setSubmitting(false);
   };
 
   return (
@@ -16,11 +21,13 @@ const SearchManga: FC<SearchMangaProps> = () => {
       <Formik initialValues={{ search: "" }} onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
           <Form className="flex items-center p-2">
-            <Field
+            <input
               className="w-full px-2 py-1 text-gray-300 text-sm border-none bg-transparent focus:outline-none"
               id="search"
               name="search"
               placeholder="Search manga"
+              value={value}
+              onChange={onChange}
             />
             <button
               className="text-2xl text-center text-white ml-2"
@@ -36,5 +43,3 @@ const SearchManga: FC<SearchMangaProps> = () => {
     </div>
   );
 };
-
-export default SearchManga;

@@ -20,7 +20,9 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   );
 
   return (
-    <div className="bg-gray-800 rounded-xl p-6 m-6 overflow-hidden">
+    <div className="card bg-gray-800 rounded-xl p-6 m-6 overflow-hidden">
+      {" "}
+      {/* use card component */}
       <img
         className="w-auto h-auto object-cover rounded-lg mx-auto "
         src={`https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg`}
@@ -29,7 +31,7 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
           mangaData.attributes.title?.["ja-ro"]
         } Cover`}
       />
-      <div className="flex flex-col text-white p-6 pt-4">
+      <div className="card-content flex flex-col text-white p-6 pt-4">
         <h2 className="text-yellow-400 uppercase font-semibold italic text-lg mb-2">
           {mangaData.attributes.title?.en ||
             mangaData.attributes.title?.["ja-ro"]}
@@ -44,22 +46,28 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
         </section>
         <div className="flex flex-wrap py-2 transition-all duration-500">
           {tags.map((tag) => (
-            <p key={tag.id} className={TAG_CLASSES}>
+            <span key={tag.id} className={`badge ${TAG_CLASSES}`}>
               {tag.attributes.name.en}
-            </p>
+            </span>
           ))}
         </div>
         <p>
           Release Year:{" "}
-          <span className={TAG_CLASSES}>{mangaData.attributes.year}</span>
+          <span className={`badge ${TAG_CLASSES}`}>
+            {mangaData.attributes.year}
+          </span>
         </p>
         <p>
           Status:{" "}
-          <span className={TAG_CLASSES}>{mangaData.attributes.status}</span>
+          <span className={`badge ${TAG_CLASSES}`}>
+            {mangaData.attributes.status}
+          </span>
         </p>
         <p>
           State:{" "}
-          <span className={TAG_CLASSES}>{mangaData.attributes.state}</span>
+          <span className={`badge ${TAG_CLASSES}`}>
+            {mangaData.attributes.state}
+          </span>
         </p>
       </div>
     </div>
