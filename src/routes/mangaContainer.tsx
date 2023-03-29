@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MangaCard } from "../components/mangaCard";
+import { MangaTile } from "../components/mangaTile";
 import { MangaSearch } from "../components/searchManga";
 import { IMangaData } from "../models/manga";
 import { fetchMangaList } from "../services/mangaAPI";
@@ -63,7 +63,7 @@ export function MangaContainer() {
               const contentRating = mangaData?.attributes?.contentRating ?? "";
 
               return (
-                <MangaCard
+                <MangaTile
                   key={mangaId}
                   mangaData={mangaData}
                   mangaId={mangaId}
