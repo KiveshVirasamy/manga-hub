@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { MangaChapterList } from "../components/mangaChapters";
 import { MangaInfoSheet } from "../components/mangaInformation";
 
-export function MangaPage() {
+export function MangaDetailsPage() {
   const location = useLocation();
   const [mangaData, coverFile] = useMemo(
     () => location.state,

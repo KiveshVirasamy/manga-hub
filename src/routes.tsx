@@ -1,8 +1,8 @@
 import { RouteObject } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./routes/errorPage";
-import { MangaCardContainer } from "./routes/mangaContainer";
-import { MangaPage } from "./routes/mangaPages";
+import { MangaContainer } from "./routes/mangaContainer";
+import { MangaDetailsPage } from "./routes/mangaPages";
 import { MangaReading } from "./routes/mangaReading";
 
 export const routes: RouteObject[] = [
@@ -17,15 +17,15 @@ export const routes: RouteObject[] = [
       },
       {
         path: "search/:searchValue",
-        element: <MangaCardContainer />,
+        element: <MangaContainer />,
       },
       {
         path: "mangalist/:orderType",
-        element: <MangaCardContainer />,
+        element: <MangaContainer />,
       },
       {
         path: "manga/:mangaId",
-        element: <MangaPage />,
+        element: <MangaDetailsPage />,
       },
       {
         path: "manga/chapter/:chapterId",

@@ -6,7 +6,7 @@ import { MangaSearch } from "../components/searchManga";
 import { IMangaData } from "../models/manga";
 import { fetchMangaList } from "../services/mangaAPI";
 
-export function MangaCardContainer() {
+export function MangaContainer() {
   const { orderType } = useParams<{ orderType: string }>();
 
   const mangaQuery = useQuery<IMangaData[], Error>(
