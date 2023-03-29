@@ -35,6 +35,7 @@ export interface IChapterFeedObject {
 
 export interface IChapterData {
     id: string;
+    attributes?: IAttributes;
     chapter: number;
     pages: number;
 }

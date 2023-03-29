@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { ChapterList } from "../components/chapterFeed";
+import { MangaChapterList } from "../components/mangaChapters";
 import { MangaInfoSheet } from "../components/mangaInformation";
 
 export function MangaPage() {
@@ -17,7 +17,7 @@ export function MangaPage() {
         coverFile={coverFile}
         mangaId={mangaData.id} // set the mangaId to mangaData.id
       />
-      <ChapterList
+      <MangaChapterList
         mangaId={mangaData.id}
         coverFile={coverFile}
         mangaData={mangaData}

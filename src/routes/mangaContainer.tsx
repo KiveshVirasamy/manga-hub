@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MangaCard } from "../components/mangaCard";
-import { SearchManga } from "../components/searchManga";
+import { MangaSearch } from "../components/searchManga";
 import { IMangaData } from "../models/manga";
-import { fetchMangaList } from "../services/api";
+import { fetchMangaList } from "../services/mangaAPI";
 
 export function MangaCardContainer() {
   const { orderType } = useParams<{ orderType: string }>();
@@ -43,7 +43,7 @@ export function MangaCardContainer() {
 
   return (
     <div className="bg-gray-900 text-white p-10">
-      <SearchManga value={searchQuery} onChange={handleSearchInputChange} />
+      <MangaSearch value={searchQuery} onChange={handleSearchInputChange} />
       {mangaListIsLoading && (
         <div className="text-white">Manga is loading...</div>
       )}

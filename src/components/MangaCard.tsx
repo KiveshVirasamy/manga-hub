@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ICoverData } from "../models/covers";
 import { IMangaCardProp } from "../props/mangaCoverProps";
-import { fetchCoverById } from "../services/api";
+import { fetchCoverById } from "../services/mangaAPI";
 
 export function MangaCard(props: IMangaCardProp): JSX.Element {
   const { mangaId, coverId, title, contentRating, mangaData } = props;
