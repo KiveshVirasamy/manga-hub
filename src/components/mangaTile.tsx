@@ -22,20 +22,21 @@ export function MangaTile(props: IMangaCardProp): JSX.Element {
   }, [data?.attributes?.fileName, mangaId]);
 
   return (
-    <div className="card block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 p-4">
+    <div className="card block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
       <Link
         to={`../manga/${mangaId}`}
         state={[mangaData, data?.attributes?.fileName]}
         className="w-full h-full block"
       >
-        <div
-          className={`w-full h-72 bg-cover bg-center bg-no-repeat border-2 border-yellow-400 shadow-yellow-400 shadow-inner overflow-hidden flex flex-col-reverse ${
-            coverUrl ? "" : "hidden"
-          }`}
-          style={{ backgroundImage: `url(${coverUrl})` }}
-        >
-          <div className="w-full h-2/3 bg-gradient-to-t from-black flex justify-end flex-col p-4">
-            <h2 className="text-white font-bold px-2">{title}</h2>
+        <div className="flex flex-col">
+          <div
+            className={`w-full h-72 bg-cover bg-center bg-no-repeat border-2 border-yellow-400 shadow-yellow-400 shadow-inner overflow-hidden ${
+              coverUrl ? "" : "hidden"
+            }`}
+            style={{ backgroundImage: `url(${coverUrl})` }}
+          ></div>
+          <div className="p-4">
+            <h2 className="text-yellow-500 font-bold text-lg">{title}</h2>
             <p className="mt-1 text-gray-600 truncate">{contentRating}</p>
           </div>
         </div>
