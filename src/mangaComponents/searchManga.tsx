@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { SearchMangaProps } from "../props/searchMangaProps";
+import { SearchMangaProps } from "../mangaProps/searchMangaProps";
 
 export const MangaSearch = (props: SearchMangaProps): JSX.Element => {
   const { value, onChange } = props;

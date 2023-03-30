@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MangaTile } from "../components/mangaTile";
-import { MangaSearch } from "../components/searchManga";
-import { IMangaData } from "../models/manga";
+import { MangaTile } from "../mangaComponents/mangaTile";
+import { MangaSearch } from "../mangaComponents/searchManga";
+import { IMangaData } from "../mangaInterfaces/manga";
 import { fetchMangaList } from "../services/mangaAPI";
 
 export function MangaContainer() {

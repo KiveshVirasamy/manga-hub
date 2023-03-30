@@ -1,4 +1,4 @@
-import { Header } from "./routes/appHeaders";
+import { Header } from "./mangaPages/appHeaders";
 import "./styles/App.css";
 
 function App() {

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ICoverData } from "../models/covers";
-import { IMangaCardProp } from "../props/mangaCoverProps";
+import { ICoverData } from "../mangaInterfaces/covers";
+import { IMangaCardProp } from "../mangaProps/mangaCoverProps";
 import { fetchCoverById } from "../services/mangaAPI";
 
 export function MangaTile(props: IMangaCardProp): JSX.Element {

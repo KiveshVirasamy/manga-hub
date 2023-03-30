@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IMangaInfoProp } from "../props/mangaCoverProps";
+import { IMangaInfoProp } from "../mangaProps/mangaCoverProps";
 
 const TRUNCATE_LENGTH = 200;
 

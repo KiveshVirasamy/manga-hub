@@ -2,10 +2,10 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { lazy, Suspense, useMemo } from "react";
 import { Link } from "react-router-dom";
 
-import { IChapterData, IChapters } from "../models/chapterList";
-import { IMangaInfoProp } from "../props/mangaCoverProps";
+import { IChapterData, IChapters } from "../mangaInterfaces/chapterList";
+import { IMangaInfoProp } from "../mangaProps/mangaCoverProps";
 import { fetchChapterFeedById } from "../services/mangaAPI";
-const ErrorPage = lazy(() => import("../routes/errorPage"));
+const ErrorPage = lazy(() => import("../mangaPages/errorPage"));
 
 type ChapterListQueryResult = UseQueryResult<IChapters[], Error>;
 

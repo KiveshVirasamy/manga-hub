@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { IChapterData } from "../models/chapters";
+import { IChapterData } from "../mangaInterfaces/chapters";
 import { fetchChapterImagesById } from "../services/mangaAPI";
 
 function ChapterImage({ chapter, hash }: IChapterData) {

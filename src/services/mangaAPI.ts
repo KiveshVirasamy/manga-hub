@@ -1,7 +1,7 @@
 import axios from "axios";
-import { IChapterData } from "../models/chapters";
-import { ICoverData } from "../models/covers";
-import { IMangaData } from "../models/manga";
+import { IChapterData } from "../mangaInterfaces/chapters";
+import { ICoverData } from "../mangaInterfaces/covers";
+import { IMangaData } from "../mangaInterfaces/manga";
 
 export async function fetchMangaList(listOrder: string): Promise<IMangaData[]> {
     const apiUrl = `https://api.mangadex.org/manga?order[${listOrder}]=desc&limit=20&includes[]=cover_art&contentRating[]=safe`;

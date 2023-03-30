@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { MangaChapterList } from "../components/mangaChapters";
-import { MangaInfoSheet } from "../components/mangaInformation";
+import { MangaChapterList } from "../mangaComponents/mangaChapters";
+import { MangaInfoSheet } from "../mangaComponents/mangaInformation";
 
 export function MangaDetailsPage() {
   const location = useLocation();

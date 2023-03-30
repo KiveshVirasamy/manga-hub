@@ -1,9 +1,9 @@
 import { RouteObject } from "react-router-dom";
 import App from "./App";
-import ErrorPage from "./routes/errorPage";
-import { MangaContainer } from "./routes/mangaContainer";
-import { MangaDetailsPage } from "./routes/mangaPages";
-import { MangaReading } from "./routes/mangaReading";
+import ErrorPage from "./mangaPages/errorPage";
+import { MangaContainer } from "./mangaPages/mangaContainer";
+import { MangaDetailsPage } from "./mangaPages/mangaPages";
+import { MangaReading } from "./mangaPages/mangaReading";
 
 export const routes: RouteObject[] = [
   {
