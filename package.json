@@ -43,7 +43,7 @@
     "vite": "^4.1.0"
   },
   "description": "A web application to read manga which makes use of the MangaDex API",
-  "main": "index.js",
+  "main": "main.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KiveshVirasamy/manga-hub.git"
