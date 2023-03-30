@@ -1,6 +1,7 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { lazy, Suspense, useMemo } from "react";
 import { Link } from "react-router-dom";
+import Spinner from "react-spinners-css/lib/esm/Spinner";
 
 import { IChapterData, IChapters } from "../mangaInterfaces/chapterList";
 import { IMangaInfoProp } from "../mangaProps/mangaCoverProps";
@@ -57,7 +58,7 @@ export function MangaChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
             </p>
           )}
         </Suspense>
-        {queryResult.status === "loading" && <p>Loading chapters...</p>}
+        {queryResult.status === "loading" && <Spinner color="#10B981" />}
         {queryResult.status === "success" && chapterList}
       </div>
     </div>

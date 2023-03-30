@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoMdSearch } from "react-icons/io";
+import { IoIosSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { SearchMangaProps } from "../mangaProps/searchMangaProps";
 
@@ -20,7 +20,7 @@ export const MangaSearch = (props: SearchMangaProps): JSX.Element => {
   };
 
   return (
-    <div className="bg-gray-800 rounded-full m-4 flex items-center justify-center">
+    <div className="bg-blue-900 border-white-600 rounded-full m-4 flex items-center justify-center">
       <form onSubmit={handleSubmit} className="flex items-center p-2">
         <input
           className="w-full px-2 py-1 text-gray-300 text-sm border-none bg-transparent focus:outline-none"
@@ -36,7 +36,7 @@ export const MangaSearch = (props: SearchMangaProps): JSX.Element => {
           disabled={!searchValue}
           aria-label="search-button"
         >
-          <IoMdSearch className="m-auto" />
+          <IoIosSearch className="m-auto" />
         </button>
       </form>
     </div>

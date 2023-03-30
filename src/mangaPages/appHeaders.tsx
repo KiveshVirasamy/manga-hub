@@ -3,40 +3,41 @@ import { Link, Outlet } from "react-router-dom";
 
 export function Header(): JSX.Element {
   const [navLinks] = useState([
-    { to: "/mangalist/createdAt", label: "New Releases" },
-    { to: "/mangalist/rating", label: "Top Rated" },
-    { to: "/mangalist/followedCount", label: "Most Popular" },
-    { to: "/mangalist/latestUploadedChapter", label: "New Chapters" },
+    { to: "/mangalist/createdAt", label: "New manga releases" },
+    { to: "/mangalist/rating", label: "Top rated manga" },
+    { to: "/mangalist/followedCount", label: "Most popular manga" },
+    { to: "/mangalist/latestUploadedChapter", label: "New chapters" },
   ]);
-
   return (
     <>
-      <header className="bg-gray-800 mb-6 flex justify-between items-center border-b-4 py-4">
-        <Link to="/" className="flex items-center">
-          <h1
-            className="ml-8 text-gray-300 text-3xl font-bold font-mono tracking-wider"
-            aria-label="heading text"
+      <nav className="navbar bg-blue-900 mb-6 border-b-4">
+        <div className="navbar-start">
+          <Link
+            to="/"
+            className="navbar-brand ml-8 text-white text-4xl font-extrabold font-mono tracking-wide"
           >
             MangaHub
-          </h1>
-        </Link>
+          </Link>
+        </div>
 
-        <nav className="flex justify-end items-center">
-          <ul className="flex items-center space-x-4 text-gray-300 text-lg font-semibold tracking-wide">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className="px-4 py-2 rounded hover:bg-gray-700"
-                  aria-label={link.label}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+        <div className="navbar-end">
+          <div className="navbar-menu">
+            <ul className="navbar-nav flex space-x-4 text-white text-lg font-semibold tracking-wide">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="nav-link hover:bg-blue-700"
+                    aria-label={`Link to ${link.label}`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
 
       <div className="container mx-auto">
         <Outlet />

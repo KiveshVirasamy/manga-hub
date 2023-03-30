@@ -16,10 +16,6 @@ export const routes: RouteObject[] = [
         element: <MangaReading />,
       },
       {
-        path: "search/:searchValue",
-        element: <MangaContainer />,
-      },
-      {
         path: "mangalist/:orderType",
         element: <MangaContainer />,
       },

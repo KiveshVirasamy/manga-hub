@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Spinner from "react-spinners-css/lib/esm/Spinner";
 import { MangaTile } from "../mangaComponents/mangaTile";
 import { MangaSearch } from "../mangaComponents/searchManga";
 import { IMangaData } from "../mangaInterfaces/manga";
@@ -31,10 +32,6 @@ export function MangaContainer() {
     setSearchQuery(event.target.value);
   };
 
-  const [cardClass] = useState(
-    "block border-2 border-yellow-500 bg-white shadow-md rounded-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 p-4"
-  );
-
   const filteredMangaList = mangaListArray.filter((mangaData: IMangaData) =>
     mangaData?.attributes?.title?.en
       ?.toLowerCase()
@@ -42,13 +39,11 @@ export function MangaContainer() {
   );
 
   return (
-    <div className="bg-gray-900 text-white p-10">
+    <div className="bg-blue-900 text-white p-10">
       <MangaSearch value={searchQuery} onChange={handleSearchInputChange} />
-      {mangaListIsLoading && (
-        <div className="text-white">Manga is loading...</div>
-      )}
+      {mangaListIsLoading && <Spinner color="#10B981" />}
       {mangaListIsSuccess && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="flex flex-wrap justify-center gap-4">
           {filteredMangaList.length > 0 ? (
             filteredMangaList.map((mangaData: IMangaData) => {
               const mangaId = mangaData.id;
@@ -63,15 +58,15 @@ export function MangaContainer() {
               const contentRating = mangaData?.attributes?.contentRating ?? "";
 
               return (
-                <MangaTile
-                  key={mangaId}
-                  mangaData={mangaData}
-                  mangaId={mangaId}
-                  coverId={coverId}
-                  title={title}
-                  contentRating={contentRating}
-                  className={cardClass}
-                />
+                <div key={mangaId} className="card max-w-sm w-full">
+                  <MangaTile
+                    mangaData={mangaData}
+                    mangaId={mangaId}
+                    coverId={coverId}
+                    title={title}
+                    contentRating={contentRating}
+                  />
+                </div>
               );
             })
           ) : (

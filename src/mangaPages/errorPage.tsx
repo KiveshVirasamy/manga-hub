@@ -16,12 +16,12 @@ export default function ErrorPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-600 ">
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Oops!</h1>
-        <p className="text-lg text-gray-600 mb-8">{`Sorry, ${error}`}</p>
+    <div className="bg-blue-600 h-screen">
+      <div className="flex flex-col items-center justify-center h-full">
+        <h1 className="text-4xl font-bold text-white mb-4">Oops!</h1>
+        <p className="text-lg text-gray-200 mb-8">{`Sorry, ${error}`}</p>
         <button
-          className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded inline-block"
+          className="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
           aria-label="back button"
           onClick={() => navigate(-1)}
         >
