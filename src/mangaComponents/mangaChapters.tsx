@@ -48,7 +48,7 @@ export function MangaChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
   }, [sortedChapterList]);
 
   return (
-    <div className="bg-gray-800 rounded-xl p-6">
+    <div className="bg-gray-800 rounded-xl p-6" aria-label="Available Chapters">
       <h1 className="text-white font-bold text-lg mb-4">Available Chapters</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <Suspense fallback={<div>Loading...</div>}>
@@ -58,7 +58,9 @@ export function MangaChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
             </p>
           )}
         </Suspense>
-        {queryResult.status === "loading" && <Spinner color="#10B981" />}
+        {queryResult.status === "loading" && (
+          <Spinner color="#10B981" aria-label="Loading Spinner" />
+        )}
         {queryResult.status === "success" && chapterList}
       </div>
     </div>

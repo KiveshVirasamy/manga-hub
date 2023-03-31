@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "react-spinners-css";
 import { IChapterData } from "../mangaInterfaces/chapters";
 import { fetchChapterImagesById } from "../services/mangaAPI";
@@ -7,8 +7,6 @@ import { fetchChapterImagesById } from "../services/mangaAPI";
 function ChapterImage({ chapter, hash }: IChapterData) {
   const imageUrl = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
 
-  // Use the `loading` attribute to add `lazy` loading to the image.
-  // This improves performance by only loading the image when it's needed.
   return (
     <div className="card p-4">
       <img
@@ -16,7 +14,7 @@ function ChapterImage({ chapter, hash }: IChapterData) {
         src={imageUrl}
         alt=""
         loading="lazy"
-        aria-label="image"
+        aria-label="Chapter Image"
       />
     </div>
   );
@@ -24,9 +22,8 @@ function ChapterImage({ chapter, hash }: IChapterData) {
 
 export function MangaReading() {
   const { chapterId } = useParams<{ chapterId: string }>();
+  const navigate = useNavigate();
 
-  // Use the `enabled` attribute to control when the query should be sent.
-  // This improves performance by not sending the query if it's not needed.
   const { data, isSuccess, isLoading } = useQuery<IChapterData, Error>(
     ["chapterImages", chapterId],
     () => fetchChapterImagesById(chapterId ?? "null"),
@@ -37,12 +34,18 @@ export function MangaReading() {
 
   return (
     <div className="pt-16 p-4">
-      <h1 className="text-center text-4xl font-bold mb-8" aria-label="heading">
-        Manga Reader
+      <button onClick={() => navigate(-1)} aria-label="Go Back Button">
+        Back
+      </button>
+      <h1
+        className="text-center text-4xl font-bold mb-8"
+        aria-label="Chapter Heading"
+      >
+        Chapter {isSuccess && data?.chapter}
       </h1>
       {isLoading && (
         <div className="flex justify-center items-center h-screen">
-          <Spinner color="#10B981" />
+          <Spinner color="#10B981" aria-label="Loading Spinner" />
         </div>
       )}
       {isSuccess &&

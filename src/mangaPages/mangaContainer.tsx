@@ -39,11 +39,23 @@ export function MangaContainer() {
   );
 
   return (
-    <div className="bg-blue-900 text-white p-10">
-      <MangaSearch value={searchQuery} onChange={handleSearchInputChange} />
-      {mangaListIsLoading && <Spinner color="#10B981" />}
+    <div
+      className="bg-blue-900 text-white p-10"
+      aria-label="Manga list container"
+    >
+      <MangaSearch
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+        aria-label="Search manga by title"
+      />
+      {mangaListIsLoading && (
+        <Spinner color="#10B981" aria-label="Loading spinner" />
+      )}
       {mangaListIsSuccess && (
-        <div className="flex flex-wrap justify-center gap-4">
+        <div
+          className="flex flex-wrap justify-center gap-4"
+          aria-label="Manga list"
+        >
           {filteredMangaList.length > 0 ? (
             filteredMangaList.map((mangaData: IMangaData) => {
               const mangaId = mangaData.id;
@@ -58,7 +70,11 @@ export function MangaContainer() {
               const contentRating = mangaData?.attributes?.contentRating ?? "";
 
               return (
-                <div key={mangaId} className="card max-w-sm w-full">
+                <div
+                  key={mangaId}
+                  className="card max-w-sm w-full"
+                  aria-label={`Manga ${title}`}
+                >
                   <MangaTile
                     mangaData={mangaData}
                     mangaId={mangaId}
@@ -70,7 +86,9 @@ export function MangaContainer() {
               );
             })
           ) : (
-            <div className="text-white">{mangaListIsError}</div>
+            <div className="text-white" aria-label="Manga list error">
+              {mangaListIsError}
+            </div>
           )}
         </div>
       )}

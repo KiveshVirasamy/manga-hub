@@ -26,15 +26,16 @@ export const MangaSearch = (props: SearchMangaProps): JSX.Element => {
           className="w-full px-2 py-1 text-gray-300 text-sm border-none bg-transparent focus:outline-none"
           id="search"
           name="search"
-          placeholder="Search manga"
+          placeholder="Filter manga"
           value={value}
           onChange={handleInputChange}
+          aria-label="Search manga"
         />
         <button
           className="text-2xl text-center text-white ml-2"
           type="submit"
           disabled={!searchValue}
-          aria-label="search-button"
+          aria-label="Submit search"
         >
           <IoIosSearch className="m-auto" />
         </button>

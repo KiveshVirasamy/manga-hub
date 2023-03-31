@@ -1,4 +1,4 @@
-import { RouteObject } from "react-router-dom";
+import { Navigate, RouteObject } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./mangaPages/errorPage";
 import { MangaContainer } from "./mangaPages/mangaContainer";
@@ -13,7 +13,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         path: "/",
-        element: <MangaReading />,
+        element: <Navigate to="/mangalist/createdAt" replace />,
       },
       {
         path: "mangalist/:orderType",

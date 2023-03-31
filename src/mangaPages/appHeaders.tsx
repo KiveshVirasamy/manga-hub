@@ -10,32 +10,42 @@ export function Header(): JSX.Element {
   ]);
   return (
     <>
-      <nav className="navbar bg-blue-900 mb-6 border-b-4">
-        <div className="navbar-start">
-          <Link
-            to="/"
-            className="navbar-brand ml-8 text-white text-4xl font-extrabold font-mono tracking-wide"
-          >
+      <nav className="bg-blue-900 mb-6 border-b-4 ">
+        <div className="flex justify-center items-center container mx-auto py-4">
+          <span className="text-white text-4xl font-extrabold font-mono tracking-wide">
+            {" "}
             MangaHub
-          </Link>
+          </span>
         </div>
-
-        <div className="navbar-end">
-          <div className="navbar-menu">
-            <ul className="navbar-nav flex space-x-4 text-white text-lg font-semibold tracking-wide">
-              {navLinks.map((link) => (
-                <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className="nav-link hover:bg-blue-700"
-                    aria-label={`Link to ${link.label}`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="hidden md:block">
+          <ul className="flex justify-center space-x-4 text-white text-lg font-semibold tracking-wide">
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className="hover:bg-blue-700 px-2 py-1 rounded"
+                  aria-label={`Link to ${link.label}`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="md:hidden">
+          <ul className="flex flex-col space-y-2 text-white text-lg font-semibold tracking-wide">
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className="hover:bg-blue-700 px-2 py-1 rounded"
+                  aria-label={`Link to ${link.label}`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </nav>
 

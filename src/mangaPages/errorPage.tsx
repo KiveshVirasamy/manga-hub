@@ -22,7 +22,7 @@ export default function ErrorPage() {
         <p className="text-lg text-gray-200 mb-8">{`Sorry, ${error}`}</p>
         <button
           className="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded inline-block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
-          aria-label="back button"
+          aria-label="Back to previous page"
           onClick={() => navigate(-1)}
         >
           Back to safety
