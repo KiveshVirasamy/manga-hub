@@ -10,15 +10,14 @@ export function Header(): JSX.Element {
   ]);
   return (
     <>
-      <nav className="bg-blue-900 mb-6 border-b-4 ">
+      <nav className="bg-blue-900 mb-6 border-b-4  ">
         <div className="flex justify-center items-center container mx-auto py-4">
           <span className="text-white text-4xl font-extrabold font-mono tracking-wide">
-            {" "}
             MangaHub
           </span>
         </div>
         <div className="hidden md:block">
-          <ul className="flex justify-center space-x-4 text-white text-lg font-semibold tracking-wide">
+          <ul className="flex justify-center py-4 text-white text-lg font-semibold tracking-wide">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link
@@ -33,7 +32,7 @@ export function Header(): JSX.Element {
           </ul>
         </div>
         <div className="md:hidden">
-          <ul className="flex flex-col space-y-2 text-white text-lg font-semibold tracking-wide">
+          <ul className="flex flex-col space-x-4 text-white text-lg font-semibold tracking-wide">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link

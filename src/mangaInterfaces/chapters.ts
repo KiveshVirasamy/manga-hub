@@ -1,4 +1,4 @@
-export interface IChapterData {
+export interface IChapters {
     hash: string;
     data: string[];
     dataSaver: string[];
