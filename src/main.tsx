@@ -2,45 +2,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
-import ErrorPage from "./routes/errorPage";
-import { LandingPage } from "./routes/landing";
-import { MangaCardContainer } from "./routes/mangaCard";
-import { MangaPage } from "./routes/mangaPages";
-import { MangaReader } from "./routes/mangaReading";
+import { routes } from "./routes";
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <LandingPage />,
-      },
-      {
-        path: "mangalist/:orderType",
-        element: <MangaCardContainer />,
-      },
-      {
-        path: "manga/:mangaId",
-        element: <MangaPage />,
-      },
-      {
-        path: "manga/chapter/:chapterId",
-        element: <MangaReader />,
-      },
-    ],
-  },
-]);
+const appRoute = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <RouterProvider router={appRoute} />
     </QueryClientProvider>
   </React.StrictMode>
 );

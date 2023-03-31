@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { ChapterFeed } from "../components/chapterFeed";
-import { MangaInfoSheet } from "../components/mangaInformation";
+import { MangaChapterList } from "../mangaComponents/mangaChapters";
+import { MangaInfoSheet } from "../mangaComponents/mangaInformation";
 
-export function MangaPage() {
+export function MangaDetailsPage() {
   const location = useLocation();
   const [mangaData, coverFile] = useMemo(
     () => location.state,
@@ -17,7 +17,7 @@ export function MangaPage() {
         coverFile={coverFile}
         mangaId={mangaData.id} // set the mangaId to mangaData.id
       />
-      <ChapterFeed
+      <MangaChapterList
         mangaId={mangaData.id}
         coverFile={coverFile}
         mangaData={mangaData}

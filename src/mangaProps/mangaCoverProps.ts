@@ -1,4 +1,4 @@
-import { IMangaData } from "../models/manga";
+import { IMangaData } from "../mangaInterfaces/manga";
 
 export interface IMangaCardProp {
     readonly mangaId: string;

@@ -1,13 +1,13 @@
 export interface IAttributes {
     volume?: any;
     chapter: string;
-    title?: string;
+    title?: string | null;
     translatedLanguage: string;
     externalUrl?: any;
-    publishAt: string;
-    readableAt: string;
-    createdAt: string;
-    updatedAt: string;
+    publishAt: string | null;
+    readableAt: string | null;
+    createdAt: string | null;
+    updatedAt: string | null;
     pages: number;
     version: number;
 }
@@ -17,7 +17,7 @@ export interface IRelationship {
     type: string;
 }
 
-export interface IChapterData {
+export interface IChapters {
     id: string;
     type: string;
     attributes: IAttributes;
@@ -27,8 +27,15 @@ export interface IChapterData {
 export interface IChapterFeedObject {
     result: string;
     response: string;
-    data: IChapterData[];
+    data: IChapters[];
     limit: number;
     offset: number;
     total: number;
+}
+
+export interface IChapterData {
+    id: string;
+    attributes?: IAttributes;
+    chapter: number;
+    pages: number;
 }

@@ -1,11 +1,8 @@
-export interface IChapter {
+export interface IChapters {
     hash: string;
     data: string[];
     dataSaver: string[];
-}
-
-export interface IChapterObject {
     result: string;
     baseUrl: string;
-    chapter: IChapter;
+    chapter: string;
 }
