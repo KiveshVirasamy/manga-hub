@@ -3,12 +3,12 @@ import { lazy, Suspense, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Spinner from "react-spinners-css/lib/esm/Spinner";
 
-import { IChapterData, IChapters } from "../mangaInterfaces/chapterList";
+import { IChapter, IChapterData } from "../mangaInterfaces/chapterList";
 import { IMangaInfoProp } from "../mangaProps/mangaCoverProps";
 import { fetchChapterFeedById } from "../services/mangaAPI";
 const ErrorPage = lazy(() => import("../mangaPages/errorPage"));
 
-type ChapterListQueryResult = UseQueryResult<IChapters[], Error>;
+type ChapterListQueryResult = UseQueryResult<IChapter[], Error>;
 
 export function MangaChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
   const queryResult: ChapterListQueryResult = useQuery(
@@ -26,7 +26,7 @@ export function MangaChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
     const chapters: IChapterData[] = queryResult.data.map(
       ({ id, attributes }) => ({
         id,
-        chapter: Number(attributes.chapter.replaceAll(".", "")) || 0,
+        chapter: Number(attributes.chapter.replaceAll(".", "")) ?? 0,
         pages: attributes.pages,
       })
     );
@@ -37,14 +37,19 @@ export function MangaChapterList({ mangaId }: IMangaInfoProp): JSX.Element {
     if (!sortedChapterList) {
       return null;
     }
-    return sortedChapterList.map((chapter) => (
-      <Link key={chapter.id} to={`../manga/chapter/${chapter.id}`}>
-        <div className="border border-gray-400 rounded p-4 cursor-pointer transition-all duration-300 hover:bg-gray-700">
-          <p className="text-white font-bold">Chapter {chapter.chapter}</p>
-          <p className="text-gray-300">Pages: {chapter.pages}</p>
-        </div>
-      </Link>
-    ));
+    return sortedChapterList.map((chapter) => {
+      if (!chapter.id) {
+        return null;
+      }
+      return (
+        <Link key={chapter.id} to={`../manga/chapter/${chapter.id}`}>
+          <div className="border border-gray-400 rounded p-4 cursor-pointer transition-all duration-300 hover:bg-gray-700">
+            <p className="text-white font-bold">Chapter {chapter.chapter}</p>
+            <p className="text-gray-300">Pages: {chapter.pages}</p>
+          </div>
+        </Link>
+      );
+    });
   }, [sortedChapterList]);
 
   return (

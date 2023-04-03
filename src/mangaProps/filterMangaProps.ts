@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-export interface SearchMangaProps {
+export interface FilterMangaProps {
 
     value: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
