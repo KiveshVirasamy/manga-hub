@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "react-spinners-css/lib/esm/Spinner";
+import { FilterManga } from "../mangaComponents/filterManga";
 import { MangaTile } from "../mangaComponents/mangaTile";
-import { MangaSearch } from "../mangaComponents/searchManga";
 import { IMangaData } from "../mangaInterfaces/manga";
 import { fetchMangaList } from "../services/mangaAPI";
 
@@ -43,7 +43,7 @@ export function MangaContainer() {
       className="bg-blue-900 text-white p-10"
       aria-label="Manga list container"
     >
-      <MangaSearch
+      <FilterManga
         value={searchQuery}
         onChange={handleSearchInputChange}
         aria-label="Search manga by title"

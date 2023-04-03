@@ -2,17 +2,19 @@ import { useState } from "react";
 import { IMangaInfoProp } from "../mangaProps/mangaCoverProps";
 
 const TRUNCATE_LENGTH = 200;
+const FALLBACK_COVER_IMG = "src/assets/smallLogo.png";
 
 export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const toggleDescription = () => setShowFullDescription(!showFullDescription);
 
   const description =
-    mangaData.attributes.description.en || "No Description Found";
+    mangaData.attributes.description?.en ?? "No Description Found";
 
-  const tags = mangaData.attributes.tags.filter(
-    (tag) => tag.attributes.group === "genre"
-  );
+  const tags =
+    mangaData.attributes.tags?.filter(
+      (tag) => tag.attributes.group === "genre"
+    ) ?? [];
 
   const truncatedDescription = description.substring(0, TRUNCATE_LENGTH);
   const isDescriptionTruncated =
@@ -29,11 +31,14 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
           style={{
             backgroundImage: `url(https://uploads.mangadex.org/covers/${mangaData.id}/${coverFile}.512.jpg)`,
           }}
+          onError={(e) => {
+            e.currentTarget.style.backgroundImage = `url(${FALLBACK_COVER_IMG})`;
+          }}
           aria-label="Manga cover"
         ></div>
         <div className="px-4 py-6">
           <h2 className="text-2xl font-bold mb-2" aria-label="Manga title">
-            {mangaData.attributes.title?.en ||
+            {mangaData.attributes.title?.en ??
               mangaData.attributes.title?.["ja-ro"]}
           </h2>
           <p className="text-gray-600" aria-label="Manga description">
@@ -52,27 +57,29 @@ export function MangaInfoSheet({ mangaData, coverFile }: IMangaInfoProp) {
               description
             )}
           </p>
-          <div className="flex flex-wrap mt-4" aria-label="Manga tags">
-            {tags.map((tag) => (
-              <span
-                key={tag.id}
-                className="badge bg-gray-200 text-gray-700 mr-2 mb-2 px-2 py-1 text-sm font-semibold rounded-full"
-              >
-                {tag.attributes.name.en}
-              </span>
-            ))}
-          </div>
+          {tags.length > 0 && (
+            <div className="flex flex-wrap mt-4" aria-label="Manga tags">
+              {tags.map((tag) => (
+                <span
+                  key={tag.id}
+                  className="badge bg-gray-200 text-gray-700 mr-2 mb-2 px-2 py-1 text-sm font-semibold rounded-full"
+                >
+                  {tag.attributes.name?.en ?? "No tag name found"}
+                </span>
+              ))}
+            </div>
+          )}
           <p className="mt-4" aria-label="Manga release year">
             <span className="font-semibold">Release Year:</span>{" "}
-            {mangaData.attributes.year}
+            {mangaData.attributes.year ?? "No year found"}
           </p>
           <p aria-label="Manga status">
             <span className="font-semibold">Status:</span>{" "}
-            {mangaData.attributes.status}
+            {mangaData.attributes.status ?? "No status found"}
           </p>
           <p aria-label="Manga state">
             <span className="font-semibold">State:</span>{" "}
-            {mangaData.attributes.state}
+            {mangaData.attributes.state ?? "No state found"}
           </p>
         </div>
       </div>

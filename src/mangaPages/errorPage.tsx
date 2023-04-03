@@ -7,7 +7,7 @@ export default function ErrorPage() {
 
   useEffect(() => {
     setError(
-      location.state?.error?.message || "An unexpected error has occurred."
+      location.state?.error?.message ?? "An unexpected error has occurred."
     );
   }, [location]);
 

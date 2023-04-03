@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IChapters } from "../mangaInterfaces/chapters";
+import { IChapterInfo } from "../mangaInterfaces/chapters";
 import { ICoverData } from "../mangaInterfaces/covers";
 import { IMangaData } from "../mangaInterfaces/manga";
 
@@ -15,13 +15,13 @@ export async function fetchCoverById(id: string): Promise<ICoverData> {
     return response.data.data;
 }
 
-export async function fetchChapterFeedById(mangaId: string): Promise<IChapters[]> {
+export async function fetchChapterFeedById(mangaId: string): Promise<IChapterInfo[]> {
     const apiUrl = `https://api.mangadex.org/manga/${mangaId}/feed?translatedLanguage[]=en&limit=500`;
     const response = await axios.get(apiUrl);
     return response.data.data;
 }
 
-export async function fetchChapterImagesById(chapterId: string): Promise<IChapters> {
+export async function fetchChapterImagesById(chapterId: string): Promise<IChapterInfo> {
     const apiUrl = `https://api.mangadex.org/at-home/server/${chapterId}`;
     const response = await axios.get(apiUrl);
     return response.data.chapter;

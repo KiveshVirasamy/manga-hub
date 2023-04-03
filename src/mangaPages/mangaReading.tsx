@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "react-spinners-css";
-import { IChapters } from "../mangaInterfaces/chapters";
+import { IChapterInfo } from "../mangaInterfaces/chapters";
 import { fetchChapterImagesById } from "../services/mangaAPI";
 
-function ChapterImage({ chapter, hash }: IChapters) {
+function ChapterImage({ chapter, hash }: IChapterInfo) {
   const imageUrl = `https://uploads.mangadex.org/data-saver/${hash}/${chapter}`;
 
   return (
@@ -24,7 +24,7 @@ export function MangaReading() {
   const { chapterId } = useParams<{ chapterId: string }>();
   const navigate = useNavigate();
 
-  const { data, isSuccess, isLoading } = useQuery<IChapters, Error>(
+  const { data, isSuccess, isLoading } = useQuery<IChapterInfo, Error>(
     ["chapterImages", chapterId],
     () => fetchChapterImagesById(chapterId ?? "null"),
     {
